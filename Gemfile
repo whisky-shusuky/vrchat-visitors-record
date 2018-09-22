@@ -73,3 +73,6 @@ gem "rspec-rails"
 gem  "factory_bot"
 #Install json_expressions
 gem "json_expressions"
+
+#Install pry
+gem "pry"
