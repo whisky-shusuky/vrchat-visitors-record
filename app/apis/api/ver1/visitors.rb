@@ -17,7 +17,23 @@ module API
         end
 
         get ':world_id' do
-          Visitor.where(world_id:params[:world_id])
+          visitor = Visitor.where(world_id:params[:world_id])
+          world_image_url = visitor[1].world_image_url
+          occupants_sum = visitor.sum {|hash| hash[:occupants]}
+          occupants_average = occupants_sum / visitor.count
+          foramated_info = []
+          for visit in visitor
+            foramated_info.push({"world_id" => "#{visit.world_id}" ,
+              "world_name" => "#{visit.world_name}" , 
+              "occupants" => "#{visit.occupants}",
+              "visit_time" => "#{visit.created_at}"})
+          end
+
+          @result = {
+            "total_visitor" => "#{occupants_sum}",
+            "occupants_average" => "#{occupants_average}",
+            "world_image_url" => "#{world_image_url}",
+            "total" => foramated_info}
         end
       end
     end
