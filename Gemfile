@@ -66,3 +66,8 @@ gem "grape"
 gem "grape-entity"
 gem "grape-swagger"
 gem "grape-rabl"
+
+#Install Rspec
+gem "rspec-rails"
+#Install Factory
+gem  "factory_bot"
