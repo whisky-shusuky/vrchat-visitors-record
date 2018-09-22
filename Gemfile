@@ -71,3 +71,5 @@ gem "grape-rabl"
 gem "rspec-rails"
 #Install Factory
 gem  "factory_bot"
+#Install json_expressions
+gem "json_expressions"
