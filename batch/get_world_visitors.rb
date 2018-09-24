@@ -38,8 +38,7 @@ output_array = []
 
 for world_id in parsed_worlds
   parsed_json = get_json("#{world_endpoint}#{world_id}?apiKey=#{vrc_public_api_key}")
-  output_array.push("{world_id => #{parsed_json['id']} , {world_name => #{parsed_json['name']} , {occupants => #{parsed_json['occupants']} }}")
+#  output_array.push("{world_id => #{parsed_json['id']} , {world_name => #{parsed_json['name']} , {occupants => #{parsed_json['occupants']} }}")
+  Visitor.create(world_id: parsed_json['id'],world_name: parsed_json['world_name'],occupants: parsed_json['occupants'],world_image_url: parsed_json['thumbnailImageUrl'])
 end
-
-p output_array
   
