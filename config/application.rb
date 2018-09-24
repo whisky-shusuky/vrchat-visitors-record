@@ -17,5 +17,7 @@ module VrchatVisitorsRecord
     # the framework and any gems in your application.
     config.paths.add File.join('app', 'apis'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.enable_dependency_loading = true 
   end
 end

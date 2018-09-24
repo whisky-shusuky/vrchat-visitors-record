@@ -79,3 +79,6 @@ gem "pry"
 
 #Install whenever
 gem 'whenever', require: false
+
+# Install activerecord-import
+gem 'activerecord-import'

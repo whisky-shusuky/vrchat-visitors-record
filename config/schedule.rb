@@ -17,4 +17,8 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
+every 1.hours do
+  command "cd $VISITOR_ROOT && bin/rails runner batch/get_world_visitors.rb"
+end
+
 # Learn more: http://github.com/javan/whenever
