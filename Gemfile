@@ -76,3 +76,6 @@ gem "json_expressions"
 
 #Install pry
 gem "pry"
+
+#Install whenever
+gem 'whenever', require: false
