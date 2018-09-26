@@ -17,7 +17,7 @@ module API
         end
 
         get ':world_id' do
-          visitor = Visitor.where(world_id:params[:world_id])
+          visitor = Visitor.world_visitor_list(params[:world_id])
           #[WIP] error handling
           #  (example) get no array. 
           world_image_url = visitor[0].world_image_url
