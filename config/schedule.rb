@@ -17,7 +17,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 1.hours do
+every 10.minutes do
   command "cd $VISITOR_ROOT && bin/rails runner batch/get_world_visitors.rb"
 end
 
