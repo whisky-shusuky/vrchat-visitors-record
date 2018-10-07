@@ -19,5 +19,7 @@ module VrchatVisitorsRecord
     config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
     config.autoload_paths += %W(#{config.root}/lib)
     config.enable_dependency_loading = true 
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
   end
 end
