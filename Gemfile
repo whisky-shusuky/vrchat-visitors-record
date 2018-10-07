@@ -82,3 +82,11 @@ gem 'whenever', require: false
 
 # Install activerecord-import
 gem 'activerecord-import'
+
+# Install capistrano for deployment
+gem "capistrano"
+gem "capistrano-bundler"
+gem "capistrano-rails"
+gem "capistrano-rbenv"
+gem "capistrano-rbenv-install"
+gem "capistrano3-puma"
