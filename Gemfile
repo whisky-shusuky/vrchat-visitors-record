@@ -90,3 +90,7 @@ gem "capistrano-rails"
 gem "capistrano-rbenv"
 gem "capistrano-rbenv-install"
 gem "capistrano3-puma"
+
+# Add active admin.
+gem 'activeadmin'
+gem 'devise'
