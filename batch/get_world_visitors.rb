@@ -5,16 +5,19 @@ require 'yaml'
 
 world_endpoint = 'https://vrchat.net/api/1/worlds/'
 vrc_public_api_key = 'JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26'
-parsed_worlds = YAML.load_file("#{Rails.root}/config/environments/target_world.yml")  
+parsed_worlds = YAML.load_file("#{Rails.root}/config/environments/target_world.yml")
 
 def get_json(location, limit = 10)
   raise ArgumentError, 'too many HTTP redirects' if limit == 0
   uri = URI.parse(location)
   begin
-    response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+    response = ""
+    Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.open_timeout = 5
       http.read_timeout = 10
-      http.get(uri.request_uri)
+      request = Net::HTTP::Get.new uri.request_uri
+      request.basic_auth "#{VRC_ACCOUNT}","#{VRC_PASS}"
+      response = http.request request
     end
     case response
     when Net::HTTPSuccess
@@ -41,4 +44,3 @@ for world_id in parsed_worlds
 #  output_array.push("{world_id => #{parsed_json['id']} , {world_name => #{parsed_json['name']} , {occupants => #{parsed_json['occupants']} }}")
   Visitor.create(world_id: parsed_json['id'],world_name: parsed_json['name'],occupants: parsed_json['occupants'],world_image_url: parsed_json['thumbnailImageUrl'])
 end
-  
